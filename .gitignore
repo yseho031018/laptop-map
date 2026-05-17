@@ -1,7 +1,7 @@
 target/
 .metadata/
 .recommenders/
+.vs/
 .DS_Store
 *.class
 *.log
-
