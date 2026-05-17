@@ -1,0 +1,7 @@
+target/
+.metadata/
+.recommenders/
+.DS_Store
+*.class
+*.log
+
