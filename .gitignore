@@ -5,3 +5,4 @@ target/
 .DS_Store
 *.class
 *.log
+src/main/resources/kakao.properties
