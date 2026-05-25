@@ -9,6 +9,8 @@
 <body>
 	<h1>장소 목록 화면</h1>
 	<p>장소 목록 화면입니다.</p>
+	<p>검색어: ${keyword}</p>
+	<pre>${apiResult}</pre>
 	<a href="<c:url value='/places/detail'/>">
 		<button type="button">장소 상세 화면으로 이동</button>
 	</a>

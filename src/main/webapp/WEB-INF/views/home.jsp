@@ -10,7 +10,7 @@
 <body>
 	<h1>노트북 하기 좋은 장소</h1>
 	<p>메인 화면입니다.</p>
-	
+	<button type="button" id="current-location">현재 위치 보기</button>
 	<div id="map"></div>
 	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=${apikey}&libraries=services"></script>
 	<script src="<c:url value='/resources/js/kakaoMap.js'/>"></script>
