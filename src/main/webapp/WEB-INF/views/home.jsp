@@ -8,15 +8,29 @@
 <link rel="stylesheet" href="<c:url value='/resources/css/home.css'/>">
 </head>
 <body>
-	<h1>노트북 하기 좋은 장소</h1>
-	<p>메인 화면입니다.</p>
-	<button type="button" id="current-location">현재 위치 보기</button>
-	<div id="map"></div>
-	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=${apikey}&libraries=services"></script>
+	<main class="app-shell">
+		<section class="page-header">
+			<div>
+				<p class="eyebrow">Laptop Map</p>
+				<h1>노트북 하기 좋은 장소</h1>
+				<p class="page-description">지도에서 작업하기 좋은 카페와 스터디 공간을 찾아보세요.</p>
+			</div>
+			<a class="button button-secondary" href="<c:url value='/places'/>">장소 목록</a>
+		</section>
+
+		<section class="map-section">
+			<div class="map-toolbar">
+				<div>
+					<h2>지도</h2>
+					<p>현재는 서울 중심으로 시작합니다.</p>
+				</div>
+				<button class="button button-primary" type="button" id="current-location">현재 위치 보기</button>
+			</div>
+			<div id="map"></div>
+		</section>
+	</main>
+
+	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=${js_apikey}&libraries=services"></script>
 	<script src="<c:url value='/resources/js/kakaoMap.js'/>"></script>
-	
-	<a href="<c:url value='/places'/>">
-		<button type="button">장소 목록 화면으로 이동</button>
-	</a>
 </body>
 </html>

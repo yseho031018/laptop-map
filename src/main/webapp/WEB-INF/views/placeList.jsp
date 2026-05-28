@@ -4,15 +4,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Place Detail</title>
+<title>Place List</title>
+<link rel="stylesheet" href="<c:url value='/resources/css/home.css'/>">
 </head>
 <body>
-	<h1>장소 목록 화면</h1>
-	<p>장소 목록 화면입니다.</p>
-	<p>검색어: ${keyword}</p>
-	<pre>${apiResult}</pre>
-	<a href="<c:url value='/places/detail'/>">
-		<button type="button">장소 상세 화면으로 이동</button>
-	</a>
+	<main class="app-shell">
+		<section class="page-header">
+			<div>
+				<p class="eyebrow">Places</p>
+				<h1>장소 목록</h1>
+				<p class="page-description">검색 결과와 저장할 장소 정보를 확인하는 화면입니다.</p>
+			</div>
+			<a class="button button-secondary" href="<c:url value='/'/>">메인 화면</a>
+		</section>
+
+		<section class="panel">
+			<h2>검색 결과</h2>
+			<p class="meta-text">검색어: ${keyword}</p>
+			<pre class="result-box">${apiResult}</pre>
+			<a class="button button-primary" href="<c:url value='/places/detail'/>">장소 상세 화면</a>
+		</section>
+	</main>
 </body>
 </html>

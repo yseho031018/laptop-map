@@ -5,15 +5,27 @@
 <head>
 <meta charset="UTF-8">
 <title>Place Detail</title>
+<link rel="stylesheet" href="<c:url value='/resources/css/home.css'/>">
 </head>
 <body>
-	<h1>장소 상세 화면</h1>
-	<p>장소 상세 화면입니다.</p>
-	<a href="<c:url value='/places'/>">
-		<button type="button">장소 화면으로 이동</button>
-	</a><br>
-	<a href="<c:url value='/'/>">
-		<button type="button">메인 화면으로 이동</button>
-	</a>
+	<main class="app-shell">
+		<section class="page-header">
+			<div>
+				<p class="eyebrow">Place Detail</p>
+				<h1>장소 상세</h1>
+				<p class="page-description">선택한 장소의 상세 정보를 확인하는 화면입니다.</p>
+			</div>
+			<a class="button button-secondary" href="<c:url value='/'/>">메인 화면</a>
+		</section>
+
+		<section class="panel">
+			<h2>상세 정보</h2>
+			<p class="meta-text">장소 상세 화면입니다.</p>
+			<div class="action-row">
+				<a class="button button-primary" href="<c:url value='/places'/>">장소 목록</a>
+				<a class="button button-secondary" href="<c:url value='/'/>">메인 화면</a>
+			</div>
+		</section>
+	</main>
 </body>
 </html>
