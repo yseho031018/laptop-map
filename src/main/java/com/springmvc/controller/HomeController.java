@@ -11,9 +11,6 @@ public class HomeController {
 	@Value("${kakao.javascript-key}")
 	private String js_apikey;
 
-	@Value("${kakao.rest-api-key}")
-	private String rest_apikey;
-
 	@GetMapping("/")
 	public String home(Model model) {
 		model.addAttribute("js_apikey",js_apikey);

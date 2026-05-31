@@ -3,6 +3,7 @@ package com.springmvc.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -18,7 +19,6 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
 @Controller
 @RequestMapping("/places")
 public class PlaceController {
@@ -32,61 +32,60 @@ public class PlaceController {
 	public String detail() {
 		return "placeDetail";
 	}
-	
+
+	@Value("${kakao.rest-api-key}")
+	private String rest_apikey;
+
 	// 요청을 받는 코드
-		@GetMapping("/search")
-		public String searchPlace(@RequestParam("query") String query,Model model) {
-		    RestTemplate restTemplate = new RestTemplate();
-		    
-		    // 카카오 API 호출 준비
-		    HttpHeaders headers = new HttpHeaders();
-		    headers.set("Authorization", "KakaoAK " + rest_apikey);
+	@GetMapping("/search")
+	public String searchPlace(@RequestParam("query") String query, Model model) {
+		RestTemplate restTemplate = new RestTemplate();
 
-		    HttpEntity<String> entity = new HttpEntity<>(headers);
-		    
-		    // 인증 헤더 추가
-		    String url = "https://dapi.kakao.com/v2/local/search/keyword.json?query=" + query;
-		    
-		    // 카카오 API 실제 호출
-		    ResponseEntity<String> response = restTemplate.exchange(
-		        url,
-		        HttpMethod.GET,
-		        entity,
-		        String.class
-		    );
-		    
-		    ObjectMapper mapper = new ObjectMapper();
-		    
-		    try {
-		        JsonNode root = mapper.readTree(response.getBody());
-		        JsonNode documents = root.get("documents");
-		        List<String> placeNames = new ArrayList<>();
-		        List<String> addressList = new ArrayList<>();
-		        List<String> phoneList = new ArrayList<>();
-		        System.out.println("=== 검색 결과 ===");
-		        for (JsonNode doc : documents) {
-		            String placeName = doc.get("place_name").asText();
-		            String address = doc.get("address_name").asText();
-		            String phone = doc.get("phone").asText("");
-		            placeNames.add(placeName);
-		            addressList.add(address);
-		            phoneList.add(phone);
-		            
-		            System.out.println(placeName + " / " + address + " / " + phone);
-		        }
-		        model.addAttribute("placeNames", placeNames);
-		        model.addAttribute("addressList", addressList);
-		        model.addAttribute("phoneList", phoneList);
-		        
-		    } catch (Exception e) {
-		        System.out.println("JSON 파싱 오류: " + e.getMessage());
-		    }
+		// 카카오 API 호출 준비
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("Authorization", "KakaoAK " + rest_apikey);
 
-		    HttpHeaders responseHeaders = new HttpHeaders();
-		    responseHeaders.setContentType(MediaType.APPLICATION_JSON);
-		    
-		    // return new ResponseEntity<>(response.getBody(), responseHeaders, HttpStatus.OK);
-		    return "placeList";
+		HttpEntity<String> entity = new HttpEntity<>(headers);
+
+		// 인증 헤더 추가
+		String url = "https://dapi.kakao.com/v2/local/search/keyword.json?query=" + query;
+
+		// 카카오 API 실제 호출
+		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+
+		ObjectMapper mapper = new ObjectMapper();
+
+		try {
+			JsonNode root = mapper.readTree(response.getBody());
+			JsonNode documents = root.get("documents");
+			List<String> placeNames = new ArrayList<>();
+			List<String> addressList = new ArrayList<>();
+			List<String> phoneList = new ArrayList<>();
+			System.out.println("=== 검색 결과 ===");
+			for (JsonNode doc : documents) {
+				String placeName = doc.get("place_name").asText();
+				String address = doc.get("address_name").asText();
+				String phone = doc.get("phone").asText("");
+				placeNames.add(placeName);
+				addressList.add(address);
+				phoneList.add(phone);
+
+				System.out.println(placeName + " / " + address + " / " + phone);
+			}
+			model.addAttribute("placeNames", placeNames);
+			model.addAttribute("addressList", addressList);
+			model.addAttribute("phoneList", phoneList);
+
+		} catch (Exception e) {
+			System.out.println("JSON 파싱 오류: " + e.getMessage());
 		}
-	
+
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.setContentType(MediaType.APPLICATION_JSON);
+
+		// return new ResponseEntity<>(response.getBody(), responseHeaders,
+		// HttpStatus.OK);
+		return "placeList";
+	}
+
 }
