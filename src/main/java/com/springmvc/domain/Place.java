@@ -1,33 +1,47 @@
 package com.springmvc.domain;
 
 public class Place {
-	private String name;
-	private String address;
-	private double latitude;
-	private double longitude;
+	private String address_name;
+	private String place_name;
+	private String road_address_name;
+	private String phone;
+	private String x;
+	private String y;
 	
-	public String getName() {
-		return name;
+	public String getAddress_name() {
+		return address_name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setAddress_name(String address_name) {
+		this.address_name = address_name;
 	}
-	public String getAddress() {
-		return address;
+	public String getPlace_name() {
+		return place_name;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setPlace_name(String place_name) {
+		this.place_name = place_name;
 	}
-	public double getLatitude() {
-		return latitude;
+	public String getRoad_address_name() {
+		return road_address_name;
 	}
-	public void setLatitude(double latitude) {
-		this.latitude = latitude;
+	public void setRoad_address_name(String road_address_name) {
+		this.road_address_name = road_address_name;
 	}
-	public double getLongitude() {
-		return longitude;
+	public String getPhone() {
+		return phone;
 	}
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getX() {
+		return x;
+	}
+	public void setX(String x) {
+		this.x = x;
+	}
+	public String getY() {
+		return y;
+	}
+	public void setY(String y) {
+		this.y = y;
 	}
 }
