@@ -1,5 +1,13 @@
 package com.springmvc.service;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.springmvc.domain.Place;
+
+@Service
 public interface PlaceService {
-	String searchPlaces(String keyword) throws Exception;
+	public List<Place> searchPlace(String query);
 }
+

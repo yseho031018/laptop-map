@@ -22,13 +22,10 @@
 
 		<section class="panel">
 			<h2>검색 결과</h2>
-			<p class="meta-text">검색어: ${keyword}</p>
-			<pre class="result-box">${apiResult}
-			<c:forEach var="place" items="${placeNames}">
-				<p>${place}</p>
-			</c:forEach></pre>
-			<a class="button button-primary"
-				href="<c:url value='/places/detail'/>">장소 상세 화면</a>
+			<c:forEach var="placeName" items="${placeNames}">
+                <p>${placeName.place_name}</p>
+            </c:forEach>
+			<a href="<c:url value='/places/detail'/>">장소 상세 화면</a>
 		</section>
 	</main>
 </body>
