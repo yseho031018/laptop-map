@@ -31,6 +31,6 @@
 	</main>
 
 	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=${js_apikey}&libraries=services"></script>
-	<script src="<c:url value='/resources/js/kakaoMap.js'/>"></script>
+	<script src="<c:url value='/resources/js/kakaoMap.js'/>?v=20260706"></script>
 </body>
 </html>

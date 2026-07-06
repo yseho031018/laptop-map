@@ -9,5 +9,6 @@ import com.springmvc.domain.Place;
 @Service
 public interface PlaceService {
 	public List<Place> searchPlace(String query);
+	public List<Place> searchLocation(String query);
 }
 

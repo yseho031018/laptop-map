@@ -44,5 +44,35 @@ public class PlaceServiceImpl implements PlaceService {
 
 		return placeNames;
 	}
+	
+	public List<Place> searchLocation(String query) {
+		 
+		String json = kakaoPlaceRepository.CallingAPI(query);
+		
+		List<Place> Loaction = new ArrayList<>();
+
+		ObjectMapper mapper = new ObjectMapper();
+
+		try {
+			JsonNode root = mapper.readTree(json);
+			JsonNode documents = root.get("documents");
+  
+			for (JsonNode doc : documents) {
+				Place place = new Place();
+				
+				String X = doc.get("x").asText();  
+				String Y = doc.get("y").asText();
+				place.setX(X);
+				place.setY(Y);
+				
+				Loaction.add(place);
+			}
+			
+		} catch (Exception e) {
+			System.out.println("JSON 파싱 오류: " + e.getMessage());
+		}
+
+		return Loaction;
+	}
 
 }

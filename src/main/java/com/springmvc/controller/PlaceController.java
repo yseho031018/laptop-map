@@ -13,7 +13,7 @@ import com.springmvc.domain.Place;
 import com.springmvc.service.PlaceService;
 
 @Controller
-@RequestMapping("/places")
+//@RequestMapping("/places")
 public class PlaceController {
 	
 	@Autowired
@@ -25,13 +25,22 @@ public class PlaceController {
 	}
 
 	// 요청을 받는 코드
+//	@GetMapping("/search")
+//	public String searchPlace(@RequestParam("query") String query, Model model) {
+//		List<Place> placeNames = placeService.searchPlace(query);
+//		
+//		model.addAttribute("placeNames", placeNames);
+//		
+//		return "placeList";
+//	}
+	
 	@GetMapping("/search")
 	public String searchPlace(@RequestParam("query") String query, Model model) {
-		List<Place> placeNames = placeService.searchPlace(query);
+		List<Place> location = placeService.searchLocation(query);
 		
-		model.addAttribute("placeNames", placeNames);
+		model.addAttribute("location", location);
 		
-		return "placeList";
+		return "home";
 	}
 
 	@GetMapping("/detail")
