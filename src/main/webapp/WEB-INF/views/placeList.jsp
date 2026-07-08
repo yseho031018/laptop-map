@@ -22,9 +22,8 @@
 
 		<section class="panel">
 			<h2>검색 결과</h2>
-			<c:forEach var="location" items="${location}">
-                <p>x: ${location.x}</p>
-                <p>y: ${location.y}</p>
+			<c:forEach var="place" items="${placeNames}">
+                <p>${place.place_name}</p>
             </c:forEach>
 			<a href="<c:url value='/places/detail'/>">장소 상세 화면</a>
 		</section>

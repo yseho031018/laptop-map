@@ -14,7 +14,7 @@ public class KakaoPlaceRepository {
 	@Value("${kakao.rest-api-key}")
 	private String rest_apikey;
 	
-	public String CallingAPI(String query) {
+	public String CallingAPI(String query, String latitude, String longitude) {
 		RestTemplate restTemplate = new RestTemplate();
 
 		// 카카오 API 호출 준비
@@ -24,7 +24,12 @@ public class KakaoPlaceRepository {
 		HttpEntity<String> entity = new HttpEntity<>(headers);
 
 		// 인증 헤더 추가
-		String url = "https://dapi.kakao.com/v2/local/search/keyword.json?query=" + query;
+		String url = "https://dapi.kakao.com/v2/local/search/keyword.json" 
+		+ "?query=" + query
+		+ "&x=" + latitude
+		+ "&y=" + longitude
+		+ "&radius=500"
+		+ "&sort=distance";
 	
 		// 카카오 API 실제 호출
 		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);

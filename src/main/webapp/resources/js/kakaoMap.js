@@ -1,10 +1,6 @@
 var container = document.getElementById('map');
 var currentLocationButton = document.getElementById('current-location');
 
-// 첫 시작 위치 좌표 변수
-var latitude = place.y;
-var longitude = place.x;
-
 // 기본 위치 고정
 var options = {
     center: new kakao.maps.LatLng(latitude, longitude),
@@ -17,19 +13,17 @@ var map = new kakao.maps.Map(container, options);
 // 마커 생성 위치
 // 지도 객체(map)가 만들어진 뒤에 마커를 생성해야 지도 위에 표시할 수 있다.
 // 현재는 첫 시작 좌표(latitude, longitude)에 기본 마커 1개를 표시한다.
-function createMaker({latitude, longitude, map}){
-	var markerPosition = new kakao.maps.LatLng(latitude, longitude);
-
-	var marker = new kakao.maps.Marker({
-		map: map,
-		position: markerPosition
-	});
-	
-	return marker;
+function createMarkers(locations) {
+    locations.forEach(location => {
+        new kakao.maps.Marker({
+            map: map,
+            position: new kakao.maps.LatLng(
+                location.y,
+                location.x
+            )
+        });
+    });
 };
-
-createMaker(latitude, longitude, map);
-createMaker(37.4979, 127.0276, map);
 
 // 버퍼링 기능 함수
 function setLocationLoading(isLoading) {
@@ -46,13 +40,16 @@ function setLocationLoading(isLoading) {
 }
 
 // 현재 위치 출력 이벤트 함수
+
 currentLocationButton.addEventListener('click', function() {
 	if (navigator.geolocation) {
 		setLocationLoading(true);
 
 	    navigator.geolocation.getCurrentPosition(function(position) {
-	        latitude = position.coords.latitude;
-	        longitude = position.coords.longitude;
+			latitude = position.coords.latitude;
+			longitude = position.coords.longitude;
+	        document.getElementById('latitude').value = position.coords.latitude;
+	        document.getElementById('longitude').value = position.coords.longitude;
 
 	        console.log('현재 위도:', latitude);
 	        console.log('현재 경도:', longitude);

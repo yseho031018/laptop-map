@@ -8,6 +8,16 @@
 <link rel="stylesheet" href="<c:url value='/resources/css/home.css'/>">
 </head>
 <body>
+	<script>
+		var latitude = "${param.latitude}" || 37.4979;
+		var longitude = "${param.longitude}" || 127.0276;
+	</script>
+	<form action="/laptop-map/search" method="get">
+		<input type="text" name="query" placeholder="검색어 입력">
+		<input type="hidden" name="latitude" id="latitude">
+		<input type="hidden" name="longitude" id="longitude">
+		<button type="submit">검색</button>
+	</form>
 	<main class="app-shell">
 		<section class="page-header">
 			<div>
@@ -29,8 +39,13 @@
 			<div id="map"></div>
 		</section>
 	</main>
-
 	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=${js_apikey}&libraries=services"></script>
+	<script>
+		const locations = ${locationsJson};
+	</script>
 	<script src="<c:url value='/resources/js/kakaoMap.js'/>?v=20260706"></script>
+	<script>
+		createMarkers(locations);
+	</script>
 </body>
 </html>
