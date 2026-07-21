@@ -17,33 +17,33 @@ public class PlaceServiceImpl implements PlaceService {
 	@Autowired
 	private KakaoPlaceRepository kakaoPlaceRepository;
 	
-//	public List<Place> searchPlace(String query) {
-//		 
-//		String json = kakaoPlaceRepository.CallingAPI(query);
-//		
-//		List<Place> placeNames = new ArrayList<>();
-//
-//		ObjectMapper mapper = new ObjectMapper();
-//
-//		try {
-//			JsonNode root = mapper.readTree(json);
-//			JsonNode documents = root.get("documents");
-//  
-//			for (JsonNode doc : documents) {
-//				Place place = new Place();
-//				
-//				String placeName = doc.get("place_name").asText();  
-//				place.setPlace_name(placeName);
-//				
-//				placeNames.add(place);
-//			}
-//			
-//		} catch (Exception e) {
-//			System.out.println("JSON 파싱 오류: " + e.getMessage());
-//		}
-//
-//		return placeNames;
-//	}
+	public List<Place> searchPlace(String query) {
+		 
+		String json = kakaoPlaceRepository.CallingAPI_1(query);
+		
+		List<Place> placeNames = new ArrayList<>();
+
+		ObjectMapper mapper = new ObjectMapper();
+
+		try {
+			JsonNode root = mapper.readTree(json);
+			JsonNode documents = root.get("documents");
+  
+			for (JsonNode doc : documents) {
+				Place place = new Place();
+				
+				String placeName = doc.get("place_name").asText();  
+				place.setPlace_name(placeName);
+				
+				placeNames.add(place);
+			}
+			
+		} catch (Exception e) {
+			System.out.println("JSON 파싱 오류: " + e.getMessage());
+		}
+
+		return placeNames;
+	}
 	
 	public List<Place> searchLocation(String query, String latitude, String longitude) {
 		 

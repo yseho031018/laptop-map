@@ -27,17 +27,18 @@ public class PlaceController {
 		return "placeList";
 	}
 
-////	 요청을 받는 코드
-//	@GetMapping("/search")
-//	public String searchPlace(@RequestParam("query") String query, Model model) {
-//		
-//		List<Place> placeNames = placeService.searchPlace(query,);
-//		
-//		model.addAttribute("placeNames", placeNames);
-//		
-//		return "placeList";
-//	}
-//	
+//	 요청을 받는 코드
+	@GetMapping("/test")
+	public String searchPlace(@RequestParam("query") String query, Model model) {
+		
+		List<Place> placeNames = placeService.searchPlace(query);
+		
+		model.addAttribute("placeNames", placeNames);
+		
+		return "placeList";
+	}
+	
+	
 	@GetMapping("/search")
 	public String searchPlace(
 			@RequestParam("query") String query,			
