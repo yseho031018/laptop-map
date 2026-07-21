@@ -20,7 +20,6 @@
 
 		<section class="panel">
 			<h2>상세 정보</h2>
-			<p class="meta-text">장소 상세 화면입니다.</p>
 			<div class="action-row">
 				<a class="button button-primary" href="<c:url value='/places'/>">장소 목록</a>
 				<a class="button button-secondary" href="<c:url value='/'/>">메인 화면</a>

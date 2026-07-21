@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
-	// API 주소 변수
 	@Value("${kakao.javascript-key}")
 	private String js_apikey;
 
