@@ -20,9 +20,13 @@
 
 		<section class="panel">
 			<h2>상세 정보</h2>
+			<p>장소 이름: ${place.place_name}</p>
+			<p>장소 주소: ${place.address_name}</p>
+			<p>전화번호 : 	${place.phone}</p>
 			<div class="action-row">
 				<a class="button button-primary" href="<c:url value='/places'/>">장소 목록</a>
 				<a class="button button-secondary" href="<c:url value='/'/>">메인 화면</a>
+				
 			</div>
 		</section>
 	</main>

@@ -66,6 +66,8 @@ public class PlaceController {
 			@RequestParam("place_name") String placeName,
 			@RequestParam("x") String x,
 			@RequestParam("y") String y,
+			@RequestParam("phone") String phone,
+			@RequestParam("address_name") String address_name,
 			Model model) {
 
 		Place place = new Place();
@@ -73,9 +75,15 @@ public class PlaceController {
 		place.setPlace_name(placeName);
 		place.setX(x);
 		place.setY(y);
+		place.setPhone(phone);
+		place.setAddress_name(address_name);
 
 		model.addAttribute("place", place);
-
+		model.addAttribute("x",x);
+		model.addAttribute("y",y);
+		model.addAttribute("phone",phone);
+		
+		
 		return "placeDetail";
 	}
 	

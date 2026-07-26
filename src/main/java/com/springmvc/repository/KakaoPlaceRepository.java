@@ -66,7 +66,7 @@ public class KakaoPlaceRepository {
 		+ "?query=" + query
 		+ "&x=" + latitude
 		+ "&y=" + longitude
-		+ "&radius=500"
+		+ "&radius=1500"
 		+ "&sort=distance";
 	
 		// 카카오 API 실제 호출
