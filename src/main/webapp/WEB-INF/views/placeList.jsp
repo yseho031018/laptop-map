@@ -25,9 +25,10 @@
 			<c:forEach var="place" items="${placeNames}" varStatus="status">
     			<form action="<c:url value='/places/select'/>" method="post">
         			<input type="hidden" name="place_name" value="${place.place_name}">
-        			<input type="hidden" name="x" value="${place.x}">
-			        <input type="hidden" name="y" value="${place.y}">
-	
+					<input type="hidden" name="x" value="${place.x}">
+					<input type="hidden" name="y" value="${place.y}">
+					<input type="hidden" name="phone" value="${place.phone}">
+					<input type="hidden" name="address_name" value="${place.address_name}">
     		   	 	<button type="submit">
             			${place.place_name}
         			</button>
