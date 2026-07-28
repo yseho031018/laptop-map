@@ -22,14 +22,14 @@ public class PlaceController {
 	@Value("${kakao.javascript-key}")
 	private String js_apikey;
 
-	@GetMapping("/places")
-	public String list() {
-		return "placeList";
-	}
+//	@GetMapping("/places")
+//	public String list() {
+//		return "placeList";
+//	}
 
 //	 요청을 받는 코드
-	@GetMapping("/test")
-	public String searchPlace(@RequestParam("query") String query, Model model) {
+	@GetMapping("/places")
+	public String searchPlace(@RequestParam(value="query", required=false) String query, Model model) {
 		
 		List<Place> placeNames = placeService.searchPlace(query);
 		
