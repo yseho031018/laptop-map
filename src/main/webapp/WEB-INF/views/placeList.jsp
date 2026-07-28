@@ -21,11 +21,20 @@
 		</section>
 
 		<section class="panel">
-			<h2>검색 결과</h2>
-			<c:forEach var="place" items="${placeNames}">
-                <p>${place.place_name}</p>
-            </c:forEach>
-			<a href="<c:url value='/places/detail'/>">장소 상세 화면</a>
+			<h2>검색 결과</h2><br>
+			<c:forEach var="place" items="${placeNames}" varStatus="status">
+    			<form action="<c:url value='/places/select'/>" method="post">
+        			<input type="hidden" name="place_name" value="${place.place_name}">
+					<input type="hidden" name="x" value="${place.x}">
+					<input type="hidden" name="y" value="${place.y}">
+					<input type="hidden" name="phone" value="${place.phone}">
+					<input type="hidden" name="address_name" value="${place.address_name}">
+    		   	 	<button type="submit">
+            			${place.place_name}
+        			</button>
+   				 </form>
+   				 
+			</c:forEach>
 		</section>
 	</main>
 </body>

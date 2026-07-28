@@ -9,6 +9,7 @@ import com.springmvc.domain.Place;
 @Service
 public interface PlaceService {
 	public List<Place> searchPlace(String query);
-	public List<Place> searchLocation(String query, String latitude, String longitude);
+	public List<Place> searchGPS(String query, String latitude, String longitude);
+	public List<Place> searchLocation(String place_name);
 }
 
