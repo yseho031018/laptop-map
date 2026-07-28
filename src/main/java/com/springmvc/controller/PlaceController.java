@@ -24,24 +24,6 @@ public class PlaceController {
 	@Value("${kakao.javascript-key}")
 	private String js_apikey;
 
-<<<<<<< HEAD
-//	@GetMapping("/places")
-//	public String list() {
-//		return "placeList";
-//	}
-
-//	 요청을 받는 코드
-	@GetMapping("/places")
-	public String searchPlace(@RequestParam(value="query", required=false) String query, Model model) {
-		
-		List<Place> placeNames = placeService.searchPlace(query);
-		
-		model.addAttribute("placeNames", placeNames);
-		
-		return "placeList";
-	}
-	
-=======
 	// 장소 목록 출력
 	@GetMapping("/places")
     public String searchPlace(@RequestParam(value="query", required=false) String query, Model model) {
@@ -56,7 +38,6 @@ public class PlaceController {
 
         return "placeList";
     }
->>>>>>> 907465b7c1ed57ca3d7c67c97daf450f0800ad5c
 	
 	@GetMapping("/search")
 	public String searchPlace(
