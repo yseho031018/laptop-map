@@ -34,13 +34,13 @@
 					<span>장소 검색</span>
 					<input id="query" type="text" name="query" placeholder="예: 카페, 스터디카페" required>
 				</label>
-				<input type="hidden" name="latitude" id="latitude">
-				<input type="hidden" name="longitude" id="longitude">
+				<input type="hidden" name="latitude" id="latitude" value="37.4979">
+				<input type="hidden" name="longitude" id="longitude" value="127.0276">
 				<div class="search-actions">
 					<button class="button button-secondary" type="button" id="current-location">현재 위치 설정</button>
 					<button class="button button-primary search-submit" type="submit">주변 검색</button>
 				</div>
-			</form>
+			</form> 
 			<p class="search-help">검색 결과는 현재 위치 기준 반경 500m 이내에서 표시됩니다.</p>
 		</section>
 
