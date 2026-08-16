@@ -6,3 +6,6 @@ target/
 *.class
 *.log
 src/main/resources/kakao.properties
+
+# 로컬 H2 데이터베이스 파일
+/data/
