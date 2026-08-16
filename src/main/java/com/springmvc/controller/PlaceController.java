@@ -10,10 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springmvc.domain.Place;
+import com.springmvc.domain.Wifi;
 import com.springmvc.service.PlaceService;
+import com.springmvc.service.WifiService;
 
 @Controller
 public class PlaceController {
@@ -21,8 +24,36 @@ public class PlaceController {
 	@Autowired
 	private PlaceService placeService;
 	
+	@Autowired
+	private WifiService wifiService; 
+	
 	@Value("${kakao.javascript-key}")
 	private String js_apikey;
+
+	@GetMapping("/wifi")
+	public String searchWifi(@RequestParam(value = "query", required = false) String query, Model model) {
+		
+		List<Wifi> wifiNames = Collections.emptyList();
+		
+		if (query != null && !query.isBlank()) {
+			wifiNames = wifiService.searchWifi(query);
+		}
+
+        model.addAttribute("wifiNames", wifiNames);
+
+        return "wifiList";
+    }
+
+	// 체크박스에서 요청하면 검색 위치와 가까운 와이파이 좌표를 최대 15개 반환한다.
+	@GetMapping("/api/wifi/markers")
+	@ResponseBody
+	public List<Wifi> getWifiMarkers(
+			@RequestParam("query") String query,
+			@RequestParam("latitude") double latitude,
+			@RequestParam("longitude") double longitude) {
+
+		return wifiService.searchNearbyWifi(query, latitude, longitude);
+	}
 
 	// 장소 목록 출력
 	@GetMapping("/places")

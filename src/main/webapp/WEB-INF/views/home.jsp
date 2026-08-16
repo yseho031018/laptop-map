@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Laptop Map</title>
-<link rel="stylesheet" href="<c:url value='/resources/css/home.css'/>?v=20260717">
+<link rel="stylesheet" href="<c:url value='/resources/css/home.css'/>?v=20260816-3">
 </head>
 <body>
 	<script>
@@ -50,18 +50,25 @@
 					<h2>지도</h2>
 					<p>현재는 서울 중심으로 시작합니다.</p>
 				</div>
-				<span class="map-radius">반경 500m</span>
+				<label class="wifi-filter" for="wifi-filter">
+					<input type="checkbox" id="wifi-filter">
+					공공 와이파이
+				</label>
 			</div>
 			<div id="map"></div>
 		</section>
 	</main>
-	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=${js_apikey}&libraries=services"></script>
+	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=${js_apikey}"></script>
 	<script>
 		const locations = ${locationsJson};
+		const currentLocationMarkerImageUrl = "<c:url value='/resources/images/current-location-marker.svg'/>";
+		const wifiMarkersUrl = "<c:url value='/api/wifi/markers'/>";
+		const wifiMarkerImageUrl = "<c:url value='/resources/images/wifi-marker.svg'/>";
+		const placeMarkerImageUrl = "<c:url value='/resources/images/place-marker.svg'/>";
 	</script>
-	<script src="<c:url value='/resources/js/kakaoMap.js'/>?v=20260706"></script>
+	<script src="<c:url value='/resources/js/kakaoMap.js'/>?v=20260816-13"></script>
 	<script>
-		createMarkers(locations);
+		createPlaceMarkers(locations);
 	</script>
 </body>
 </html>

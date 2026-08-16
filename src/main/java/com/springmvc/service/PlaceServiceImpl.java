@@ -17,6 +17,7 @@ public class PlaceServiceImpl implements PlaceService {
 	@Autowired
 	private KakaoPlaceRepository kakaoPlaceRepository;
 	
+	// 모든 정보
 	public List<Place> searchPlace(String query) {
 		 
 		String json = kakaoPlaceRepository.CallingAPI_1(query);
@@ -56,6 +57,7 @@ public class PlaceServiceImpl implements PlaceService {
 		return placeNames;
 	}
 	
+	// 좌표값 
 	public List<Place> searchGPS(String query, String latitude, String longitude) {
 		 
 		String json = kakaoPlaceRepository.CallingAPI(query, longitude, latitude);
@@ -71,8 +73,16 @@ public class PlaceServiceImpl implements PlaceService {
 			for (JsonNode doc : documents) {
 				Place place = new Place();
 				
+				String addressName = doc.get("address_name").asText();
+				String placeName = doc.get("place_name").asText();
+				String roadAddressName = doc.get("road_address_name").asText();
+				String phone = doc.get("phone").asText();
 				String X = doc.get("x").asText();  
 				String Y = doc.get("y").asText();
+				place.setAddress_name(addressName);
+				place.setPlace_name(placeName);
+				place.setRoad_address_name(roadAddressName);
+				place.setPhone(phone);
 				place.setX(X);
 				place.setY(Y);
 				
@@ -85,7 +95,8 @@ public class PlaceServiceImpl implements PlaceService {
 
 		return Loaction;
 	}
-
+	
+	// 장소 이름
 	public List<Place> searchLocation(String place_name) {
 		 
 		String json = kakaoPlaceRepository.CallingAPI_2(place_name);

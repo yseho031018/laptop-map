@@ -14,6 +14,7 @@ public class HomeController {
 	@GetMapping("/")
 	public String home(Model model) {
 		model.addAttribute("js_apikey",js_apikey);
+	    model.addAttribute("locationsJson", "[]");
 		return "home";
 	}
 	
